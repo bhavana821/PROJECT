@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		
+		<meta charset="UTF-8">
+	    
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/4.2.0/normalize.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <title>Phonebook</title>
+   <style type="text/css">
+
+   	
+
+   	/*-------page headre styling------*/
+   	.page-header{
+   		background-color: #3E5E93;
+        color: #fff;
+        margin-bottom: 40px;
+        padding: 20px 0;
+        text-align: center;
+   	  }
+   	  .logo{
+   	  	font-size: 32px;
+        font-weight: bold;
+        text-transform: uppercase;
+   	  }
+
+   	  .page-body{
+   	  	max-width: 1180px;
+   	  	position: relative;
+   	  	margin: 30px auto;
+   	  }
+
+   	  .delete-row{
+   	  	display: none;
+   	  }
+
+   	  .delete-row.is-visible{
+   	  	width: 10px;
+   	  	display: table-cell;
+   	  }
+   	  .glyphicon-remove:hover {
+     transition: color 0.3s;
+     color: red;
+}
+
+ 
+
+/*---------insert form styling-------*/
+       .form {
+          padding: 20px;
+          background-color: #fff;
+          border-bottom-left-radius: 4px;
+          border-bottom-right-radius: 4px;
+          box-shadow: 0 2px 6px rgba(0, 0, 0, 0.45);
+          left: 50%;
+          opacity: 0;
+          position: absolute;
+          top: 40px;
+          transform: translate(-50%, -5%);
+         transition: 0.4s ease-in-out;
+         visibility: hidden;
+         z-index: 2;
+      }
+    .form.is-visible {
+       opacity: 1;
+       transform: translate(-50%, 0);
+        visibility: visible;
+       }
+    .form-title {
+       margin-top: 0;
+       padding-bottom: 20px;
+     }
+   .form-label {
+      width: 80px;
+     }
+     /*----------insert overlay-------*/
+    .form-overlay {
+       background-color: #212121;
+       bottom: 0;
+       height: 100%;
+       left: 0;
+      opacity: 0;
+      position: fixed;
+      right: 0;
+      top: 0;
+     transition: 0.4s ease-in-out;
+     visibility: hidden;
+     width: 100%;
+     z-index: 1;
+    }
+   .form-overlay.is-visible {
+     opacity: 0.4;
+     visibility: visible;
+    }
+    
+   
+   	
+   </style>
+	</head>
+	<body class="page-body">
+    <header class='page-header'>
+      <div>
+        <p class='logo'>Phonebook</p>
+      </div>
+    </header>
+		<div>
+			<main>
+        <button type="button" class="js-add btn btn-primary">Add</button>
+        <button type="button" class="js-delete btn btn-danger">Delete</button>
+       
+
+        <form class='form js-form'>
+					<h2 class="form-title"> Add new contact </h2>
+					<div class="form-group">
+	          <label class='form-label' for='form-link-input'>Name:</label>
+	          <input class='form-input form-name' type='text' required/>
+					</div>
+					<div class="form-group">
+	          <label class='form-label' for='form-link-input'>Surname:</label>
+	          <input class='form-input form-surname' type='text' required/>
+					</div>
+					<div class="form-group">
+	          <label class='form-label' for='form-link-input'>Phone:</label>
+	          <input class='form-input form-phone' type='number' required/>
+					</div>
+          <button type="submit" class="js-submit btn btn-primary">Submit</button>
+					<button type="button" class="js-cancel btn btn-danger">Cancel</button>
+        </form>
+
+				<div class='form-overlay js-form-overlay'></div>
+
+        <div>
+          <table class="table table-striped">
+			      <thead>
+			      	
+			      		<tr>
+			          <th class="delete-row"></th>
+			          <th>Name</th>
+			          <th>Surname</th>
+			          <th>Phone</th>
+			        </tr>
+			      </thead>
+			      <tbody class="contact-list">
+			        <tr class="contact">
+			          <td class="delete-row"><span class="glyphicon glyphicon-remove"></span></td>
+			          <td>George</td>
+			          <td>Smith</td>
+			          <td>2105346345</td>
+			        </tr>
+			        <tr class="contact">
+			          <td class="delete-row"><span class="glyphicon glyphicon-remove"></span></td>
+			          <td>John</td>
+			          <td>Doe</td>
+			          <td>2109755432</td>
+			        </tr>
+			        <tr class="contact">
+			          <td class="delete-row"><span class="glyphicon glyphicon-remove"></span></td>
+			          <td>Mary</td>
+			          <td>Summers</td>
+			          <td>2103476456</td>
+			        </tr>
+			        <tr class="contact">
+			        	 <td class="delete-row"><span class="glyphicon glyphicon-remove"></span></td>
+			          <td>peter</td>
+			          <td>parker</td>
+			          <td>214587965</td>
+			        </tr>
+
+			        <tr class="contact">
+			        	 <td class="delete-row"><span class="glyphicon glyphicon-remove"></span></td>
+			          <td>jhonas</td>
+			          <td>james</td>
+			          <td>145879654</td>
+			        </tr>
+
+			        <tr class="contact">
+			        	 <td class="delete-row"><span class="glyphicon glyphicon-remove"></span></td>
+			          <td>Nick</td>
+			          <td>Jhon</td>
+			          <td>1254687932</td>
+			        </tr>
+
+			        <tr class="contact">
+			        	 <td class="delete-row"><span class="glyphicon glyphicon-remove"></span></td>
+			          <td>Samuel</td>
+			          <td>Mrindia</td>
+			          <td>231458974</td>
+			        </tr>
+
+			        <tr class="contact">
+			        	 <td class="delete-row"><span class="glyphicon glyphicon-remove"></span></td>
+			          <td>Sam</td>
+			          <td>Kapoor</td>
+			          <td>1254689254</td>
+			        </tr>
+
+
+			        <tr class="contact">
+			        	 <td class="delete-row"><span class="glyphicon glyphicon-remove"></span></td>
+			          <td>Sharath</td>
+			          <td>Yadav</td>
+			          <td>2547891254</td>
+			        </tr>
+
+
+			        <tr class="contact">
+			        	 <td class="delete-row"><span class="glyphicon glyphicon-remove"></span></td>
+			          <td>Samuel</td>
+			          <td>Jones</td>
+			          <td>1254681254</td>
+			        </tr>
+
+
+			        <tr class="contact">
+			        	 <td class="delete-row"><span class="glyphicon glyphicon-remove"></span></td>
+			          <td>Tina</td>
+			          <td>Dutta</td>
+			          <td>154879631</td>
+			        </tr>
+                  </tbody>
+			    </table>
+				</div>
+			</main>
+		</div>
+		<script src="https://code.jquery.com/jquery-1.12.3.min.js"></script>
+		<script src="index.js"></script>
+		<script>
+			$(document).ready(function() {
+	/*------Display a form to add new contact----*/
+ 
+	$('.js-add').on('click', function(event) {
+		event.preventDefault();
+    $('.js-form').toggleClass('is-visible');
+		$('.delete-row').removeClass('is-visible');
+		$('.js-form-overlay').addClass('is-visible');
+	});
+
+	/*--------Display delete column------*/
+	
+	$('.js-delete').on('click', function(event) {
+		event.preventDefault();
+
+		$('.delete-row').toggleClass('is-visible');
+		$('.js-form').removeClass('is-visible');
+	});
+
+	
+
+	/*--------Delete row-------*/
+	
+	$('.contact-list').on('click', '.delete-row', function(event) {
+		event.preventDefault();
+		$(this).closest('.contact').remove();
+	});
+
+
+	
+
+	/*---------Form submit button event--------*/
+	
+	$('.js-form').submit(function(event) {
+		event.preventDefault();
+		$('.contact-list').prepend('<tr class="contact"><td class="delete-row"><span class="glyphicon glyphicon-remove"></span></td><td>' +
+		$('.form-name').val()+'</td><td>' +
+		$('.form-surname').val()+'</td><td>' +
+		$('.form-phone').val()+'</td></tr>');
+		$(this).closest('form').find("input, textarea").val("");
+		$('.js-form').removeClass('is-visible');
+		$('.js-form-overlay').removeClass('is-visible');
+	});
+
+	/*------Form cancel button event-----*/
+	
+	$('.js-form').on('click', '.js-cancel', function(event) {
+		$(this).closest('form').find("input, textarea").val("");
+		$('.js-form').removeClass('is-visible');
+		$('.js-form-overlay').removeClass('is-visible');
+	});
+});
+</script>
+	</body>
+	</html>
+
